@@ -31,7 +31,7 @@ public class OrderFileProcessor {
             File file = new File(fileName);
             FileType fileType = fileProcessor.getFileType(file);
              List<OrderData> orderData = (List<OrderData>) parserFactory.getParser(fileType).read(file, OrderData.class);
-            final int[] lineNo = {1}; // Hack
+            final int[] lineNo = {1};
             orderData.forEach(o -> {
                 o.setFileName(fileName);
                 o.setResult("OK");
@@ -39,7 +39,6 @@ public class OrderFileProcessor {
                 orderDataRepository.add(o);
                 lineNo[0] = lineNo[0] + 1;
             });
-//                    orderDataRepository.add(o.setFileName(fileName))); //orderDataRepository.add(orderData);
         }
         printAllOrderData();
     }
